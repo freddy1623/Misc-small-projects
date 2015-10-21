@@ -6,11 +6,13 @@
 $Users = Import-Csv .\Users.csv
 forEach ($User in $Users)
 {
-    $first = $User.first[0..1]
-    $last = $User.last[0..2]
+    $firstname = $User.first
+    $first = $firstname[0..1]
+    $lastname = $User.last
+    $last = $lastname[0..2]
     $username = "$first$last"
     $username = $username -replace " ", ""
-    "dsadd user `"cn=$username, ou=Illuminati, dc=datavg2, dc=local -fn Joetta -ln Heckel pwd Admin123" | out-file run.bat -Encoding "UTF8" -Append
+    "dsadd user `"cn=$username, ou=Illuminati, dc=datavg2, dc=local -fn $firstname -ln $lastname pwd Admin123" | out-file run.bat -Encoding "UTF8" -Append
 }
 "echo Script has  finished running, thanks based Daniel in 1ELA for making our lives easier" | out-file run.bat -Encoding "UTF8" -Append
 "PAUSE" | out-file run.bat -Encoding "UTF8" -append
