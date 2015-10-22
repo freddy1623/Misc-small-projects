@@ -11,8 +11,10 @@ forEach ($User in $Users)
     $lastname = $User.last
     $last = $lastname[0..2]
     $username = "$first$last"
+    #Hack to fix weird spaces between characters
     $username = $username -replace " ", ""
     "dsadd user `"cn=$username, ou=Illuminati, dc=datavg2, dc=local -fn $firstname -ln $lastname -pwd Admin123" | out-file run.bat -Encoding "UTF8" -Append
+    #Hack to wait .2 seconds between each command, because of outdated servers cant keep up with Active Directory
     "ping 192.0.2.2 -n 1 -w 2 > nul" | out-file run.bat -Encoding "UTF8" -Append
 }
 "echo Script has  finished running, thanks based Daniel in 1ELA for making our lives easier" | out-file run.bat -Encoding "UTF8" -Append
