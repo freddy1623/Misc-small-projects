@@ -13,6 +13,7 @@ forEach ($User in $Users)
     $username = "$first$last"
     $username = $username -replace " ", ""
     "dsadd user `"cn=$username, ou=Illuminati, dc=datavg2, dc=local -fn $firstname -ln $lastname -pwd Admin123" | out-file run.bat -Encoding "UTF8" -Append
+    "ping 192.0.2.2 -n 1 -w 2 > nul" | out-file run.bat -Encoding "UTF8" -Append
 }
 "echo Script has  finished running, thanks based Daniel in 1ELA for making our lives easier" | out-file run.bat -Encoding "UTF8" -Append
 "PAUSE" | out-file run.bat -Encoding "UTF8" -append
